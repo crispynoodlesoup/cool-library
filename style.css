@@ -73,8 +73,12 @@ button:active {
   text-align: right;
 }
 
+.modal-content h3 {
+  text-align: center;
+}
+
 .modal-content p {
-  margin-bottom: 8px;
+  margin-top: 8px;
 }
 
 input {
@@ -82,7 +86,7 @@ input {
   border: none;
   border-bottom: 1px solid #888;
   margin-top: 4px;
-  padding: 0 4px;
+  padding: 4px;
 }
 
 input:focus {
@@ -91,6 +95,14 @@ input:focus {
 
 .modal-content label {
   font-size: 14px;
+  margin-bottom: auto;
+}
+
+.text-area-field {
+  display: flex;
+  align-items: top;
+  justify-content: right;
+  gap: 4px;
 }
 
 .modal-button-row {
@@ -109,4 +121,25 @@ input:focus {
 
 .modal-button-row a:hover {
   color: #444;
+}
+
+textarea {
+  width: 185px;
+  resize: vertical;
+  min-height: 40px;
+  max-height: 100px;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #888;
+  background-color: #f3f3f3;
+  margin-top: 4px;
+  padding: 4px;
+  overflow: hidden;
+}
+
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
 }

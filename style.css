@@ -57,11 +57,12 @@ button:active {
 }
 
 .modal {
+  display: none;
+  visibility: hidden;
   position: fixed;
   height: 100%;
   width: 100%;
   z-index: 2;
-  display: grid;
   place-content: center;
   background-color: rgba(145, 145, 145, 0.253);
 }
@@ -127,7 +128,7 @@ textarea {
   width: 185px;
   resize: vertical;
   min-height: 40px;
-  max-height: 100px;
+  max-height: 200px;
   outline: none;
   border: none;
   border-bottom: 1px solid #888;

@@ -17,7 +17,7 @@
     <main>
         <div class="bookshelf-header">
             <h2>My Library</h2>
-            <button>+ Add a Book</button>
+            <button class="add-book">+ Add a Book</button>
         </div>
         <div class="bookshelf">
 
@@ -27,8 +27,8 @@
         <form class="modal-content">
             <h3>New Book</h3>
             <p>
-                <label for="title">Title: </label>
-                <input id="title" type="text">
+                <label for="title">* Title: </label>
+                <input id="title" type="text" required>
             </p>
             <p>
                 <label for="author">Author: </label>
@@ -47,8 +47,8 @@
                 <input id="read" type="checkbox">
             </p>
             <div class="modal-button-row">
-                <a>Cancel</a>
-                <button type="button">Submit</button>
+                <a class="cancel">Cancel</a>
+                <button class="submit-book" type="button">Submit</button>
             </div>
         </form>
     </div>

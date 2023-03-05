@@ -14,6 +14,38 @@ const pageCountInput = document.getElementById("page-count");
 const descriptionInput = document.getElementById("description");
 const readInput = document.getElementById("read");
 
+let myLibrary = [];
+
+//Book constructor
+function Book(
+  title,
+  read,
+  author = null,
+  pageCount = null,
+  description = null
+) {
+  this.title = title;
+  this.read = read;
+  this.author = author;
+  this.pageCount = pageCount;
+  this.description = description;
+}
+
+//assumes inputs are filled
+function addBookToLibrary() {
+  let myBook = new Book(
+    titleInput.value,
+    readInput.checked,
+    authorInput.value,
+    pageCountInput.value,
+    descriptionInput.value
+  );
+
+  myLibrary.push(myBook);
+}
+
+function removeBookFromLibrary() {}
+
 addBook.addEventListener("click", (e) => {
   modal.style.visibility = "visible";
   modal.style.display = "grid";
@@ -28,6 +60,9 @@ modalContent.addEventListener("submit", (e) => {
   //check title is not empty
   e.preventDefault();
 
+  addBookToLibrary();
+
+  //hide modal
   modal.style.visibility = "hidden";
   modal.style.display = "none";
 });

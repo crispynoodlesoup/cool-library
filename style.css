@@ -55,8 +55,8 @@ button:hover {
 
 .bookshelf {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 240px);
-  grid-auto-rows: 240px;
+  grid-template-columns: repeat(auto-fit, 250px);
+  grid-auto-rows: 250px;
   justify-content: space-between;
   row-gap: 32px;
 }
@@ -64,6 +64,7 @@ button:hover {
 .book-card {
   border: 2px solid #ccc;
   border-radius: 16px;
+  padding: 16px;
 }
 
 button:active {

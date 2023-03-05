@@ -53,7 +53,7 @@ function addBookToLibrary() {
   bookCard.appendChild(cardTitle);
   bookCard.appendChild(cardAuthor);
   bookCard.appendChild(cardDescription);
-  bookCard.appendChild(cardIconRow);
+  bookCard.appendChild(cardIconRow.cloneNode(true));
 
   bookshelf.append(bookCard);
 }

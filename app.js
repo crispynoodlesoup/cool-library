@@ -58,6 +58,12 @@ function addBookToLibrary(
   // create a new book object with the input values
   let myBook = new Book(myLibrary.length, title, read, author, description);
 
+  // reset form
+  titleInput.value = "";
+  readInput.checked = false;
+  authorInput.value = "";
+  descriptionInput.value = "";
+
   // create the book card element
   const bookCard = document.createElement("div");
   bookCard.classList.add("book-card");

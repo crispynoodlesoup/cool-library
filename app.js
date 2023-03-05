@@ -142,7 +142,7 @@ modalContent.addEventListener("submit", (e) => {
 
 // add custom card to start
 addBookToLibrary(
-  "Things to make and do in the 4th dimension",
+  "Things to make and do in the fourth dimension",
   true,
   "Matt Parker",
   "A book from the stand-up mathematician that makes math fun again! Math is boring, says the mathematician and comedian Matt Parker. Part of the problem may be the way the subject is taught, but it's also true that we all find math difficult and challenging"

@@ -108,6 +108,7 @@ button:hover {
 .eye-icon {
   height: 28px;
   cursor: pointer;
+  transition: all 0.5s;
 }
 
 .unread {

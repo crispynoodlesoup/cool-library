@@ -31,8 +31,22 @@ function removeBookFromLibrary(book) {
   // remove book from library
   myLibrary.splice(book.index, 1);
 
-  //
+  // remove bookCard from DOM
   document.querySelector(`[data-index="${book.index}"]`).remove();
+}
+
+function changeReadStatus(book) {
+  // change status
+  book.read = !book.read;
+
+  // animate icon
+  if (book.read) {
+    if (this.classList.contains("unread")) this.classList.remove("unread");
+    this.src = "./eye.svg";
+  } else {
+    this.classList.add("unread");
+    this.src = "./eye-off.svg";
+  }
 }
 
 function addBookToLibrary(
@@ -78,6 +92,11 @@ function addBookToLibrary(
     eyeIcon.src = "./eye-off.svg";
   }
 
+  // handle clicking event
+  eyeIcon.addEventListener("click", () =>
+    changeReadStatus.call(eyeIcon, myBook)
+  );
+
   cardIconRow.appendChild(eyeIcon);
 
   // append sub-elements to book card
@@ -122,8 +141,3 @@ addBookToLibrary(
   "Matt Parker",
   "A book from the stand-up mathematician that makes math fun again! Math is boring, says the mathematician and comedian Matt Parker. Part of the problem may be the way the subject is taught, but it's also true that we all find math difficult and challenging"
 );
-
-/*    button animations    */
-const eye = document.querySelector(".eye-icon");
-
-eye.addEventListener("click", (e) => {});

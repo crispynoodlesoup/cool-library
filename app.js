@@ -15,7 +15,6 @@ const readInput = document.getElementById("read");
 
 //bookshelf
 const bookshelf = document.querySelector(".bookshelf");
-const cardIconRow = document.querySelector(".card-icon-row");
 
 let myLibrary = [];
 
@@ -27,33 +26,51 @@ function Book(title, read, author = "", description = "") {
   this.description = description;
 }
 
-//assumes inputs are filled
-function addBookToLibrary() {
-  let myBook = new Book(
-    titleInput.value,
-    readInput.checked,
-    authorInput.value,
-    descriptionInput.value
-  );
+function addBookToLibrary(
+  title = titleInput.value,
+  read = readInput.checked,
+  author = authorInput.value,
+  description = descriptionInput.value
+) {
+  let myBook = new Book(title, read, author, description);
 
   //add to array
   myLibrary.push(myBook);
 
-  let bookCard = document.createElement("div");
+  const bookCard = document.createElement("div");
   bookCard.classList.add("book-card");
 
   //create sub-elements
   const cardTitle = document.createElement("h3");
   cardTitle.innerText = myBook.title;
   const cardAuthor = document.createElement("h5");
-  cardAuthor.innerText = myBook.author;
+  cardAuthor.innerText = `By: ${myBook.author}`;
   const cardDescription = document.createElement("p");
   cardDescription.innerText = myBook.description;
+
+  //card icon row
+  const cardIconRow = document.createElement("div");
+  cardIconRow.classList.add("card-icon-row");
+
+  const removeButton = document.createElement("button");
+  removeButton.classList.add("remove-button");
+  removeButton.innerText = "Delete";
+  cardIconRow.appendChild(removeButton);
+
+  const eyeIcon = document.createElement("img");
+  eyeIcon.classList.add("eye-icon");
+  if (read) {
+    eyeIcon.src = "./eye.svg";
+  } else {
+    eyeIcon.src = "./eye-off.svg";
+  }
+
+  cardIconRow.appendChild(eyeIcon);
 
   bookCard.appendChild(cardTitle);
   bookCard.appendChild(cardAuthor);
   bookCard.appendChild(cardDescription);
-  bookCard.appendChild(cardIconRow.cloneNode(true));
+  bookCard.appendChild(cardIconRow);
 
   bookshelf.append(bookCard);
 }
@@ -80,6 +97,14 @@ modalContent.addEventListener("submit", (e) => {
   modal.style.visibility = "hidden";
   modal.style.display = "none";
 });
+
+//add custom card to start
+addBookToLibrary(
+  "Things to make and do in the 4th dimension",
+  true,
+  "Matt Parker",
+  "A book from the stand-up mathematician that makes math fun again! Math is boring, says the mathematician and comedian Matt Parker. Part of the problem may be the way the subject is taught, but it's also true that we all find math difficult and challenging"
+);
 
 /*    button animations    */
 const eye = document.querySelector(".eye-icon");

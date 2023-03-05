@@ -1,29 +1,38 @@
-//modal
+// modal
 const modal = document.querySelector(".modal");
 const modalContent = document.querySelector(".modal-content");
 
-//buttons
+// buttons
 const addBook = document.querySelector(".add-book");
 const submitBook = document.querySelector(".submit-book");
 const cancel = document.querySelector(".cancel");
 
-//form inputs
+// form inputs
 const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
 const descriptionInput = document.getElementById("description");
 const readInput = document.getElementById("read");
 
-//bookshelf
+// bookshelf
 const bookshelf = document.querySelector(".bookshelf");
 
 let myLibrary = [];
 
-//Book constructor
-function Book(title, read, author = "", description = "") {
+// Book constructor
+function Book(index, title, read, author = "", description = "") {
+  this.index = index;
   this.title = title;
   this.read = read;
   this.author = author;
   this.description = description;
+}
+
+function removeBookFromLibrary(book) {
+  // remove book from library
+  myLibrary.splice(book.index, 1);
+
+  //
+  document.querySelector(`[data-index="${book.index}"]`).remove();
 }
 
 function addBookToLibrary(
@@ -32,15 +41,14 @@ function addBookToLibrary(
   author = authorInput.value,
   description = descriptionInput.value
 ) {
-  let myBook = new Book(title, read, author, description);
+  // create a new book object with the input values
+  let myBook = new Book(myLibrary.length, title, read, author, description);
 
-  //add to array
-  myLibrary.push(myBook);
-
+  // create the book card element
   const bookCard = document.createElement("div");
   bookCard.classList.add("book-card");
 
-  //create sub-elements
+  // create book card sub-elements
   const cardTitle = document.createElement("h3");
   cardTitle.innerText = myBook.title;
   const cardAuthor = document.createElement("h5");
@@ -48,13 +56,18 @@ function addBookToLibrary(
   const cardDescription = document.createElement("p");
   cardDescription.innerText = myBook.description;
 
-  //card icon row
+  // create card icon row with respective classes and text
   const cardIconRow = document.createElement("div");
   cardIconRow.classList.add("card-icon-row");
 
+  // create the remove button with respective classes and text
   const removeButton = document.createElement("button");
   removeButton.classList.add("remove-button");
   removeButton.innerText = "Delete";
+
+  // handle clicking event
+  removeButton.addEventListener("click", () => removeBookFromLibrary(myBook));
+
   cardIconRow.appendChild(removeButton);
 
   const eyeIcon = document.createElement("img");
@@ -67,15 +80,19 @@ function addBookToLibrary(
 
   cardIconRow.appendChild(eyeIcon);
 
+  // append sub-elements to book card
   bookCard.appendChild(cardTitle);
   bookCard.appendChild(cardAuthor);
   bookCard.appendChild(cardDescription);
   bookCard.appendChild(cardIconRow);
 
+  // save index in DOM and display book card on bookshelf
+  bookCard.dataset.index = myLibrary.length;
   bookshelf.append(bookCard);
-}
 
-function removeBookFromLibrary() {}
+  // save bookcard index and add to library
+  myLibrary.push(myBook);
+}
 
 addBook.addEventListener("click", (e) => {
   modal.style.visibility = "visible";
@@ -88,17 +105,17 @@ cancel.addEventListener("click", (e) => {
 });
 
 modalContent.addEventListener("submit", (e) => {
-  //check title is not empty
+  // check title is not empty
   e.preventDefault();
 
   addBookToLibrary();
 
-  //hide modal
+  // hide modal
   modal.style.visibility = "hidden";
   modal.style.display = "none";
 });
 
-//add custom card to start
+// add custom card to start
 addBookToLibrary(
   "Things to make and do in the 4th dimension",
   true,

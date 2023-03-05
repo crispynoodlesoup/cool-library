@@ -10,24 +10,20 @@ const cancel = document.querySelector(".cancel");
 //form inputs
 const titleInput = document.getElementById("title");
 const authorInput = document.getElementById("author");
-const pageCountInput = document.getElementById("page-count");
 const descriptionInput = document.getElementById("description");
 const readInput = document.getElementById("read");
+
+//bookshelf
+const bookshelf = document.querySelector(".bookshelf");
+const cardIconRow = document.querySelector(".card-icon-row");
 
 let myLibrary = [];
 
 //Book constructor
-function Book(
-  title,
-  read,
-  author = null,
-  pageCount = null,
-  description = null
-) {
+function Book(title, read, author = "", description = "") {
   this.title = title;
   this.read = read;
   this.author = author;
-  this.pageCount = pageCount;
   this.description = description;
 }
 
@@ -37,11 +33,29 @@ function addBookToLibrary() {
     titleInput.value,
     readInput.checked,
     authorInput.value,
-    pageCountInput.value,
     descriptionInput.value
   );
 
+  //add to array
   myLibrary.push(myBook);
+
+  let bookCard = document.createElement("div");
+  bookCard.classList.add("book-card");
+
+  //create sub-elements
+  const cardTitle = document.createElement("h3");
+  cardTitle.innerText = myBook.title;
+  const cardAuthor = document.createElement("h5");
+  cardAuthor.innerText = myBook.author;
+  const cardDescription = document.createElement("p");
+  cardDescription.innerText = myBook.description;
+
+  bookCard.appendChild(cardTitle);
+  bookCard.appendChild(cardAuthor);
+  bookCard.appendChild(cardDescription);
+  bookCard.appendChild(cardIconRow);
+
+  bookshelf.append(bookCard);
 }
 
 function removeBookFromLibrary() {}
@@ -66,3 +80,8 @@ modalContent.addEventListener("submit", (e) => {
   modal.style.visibility = "hidden";
   modal.style.display = "none";
 });
+
+/*    button animations    */
+const eye = document.querySelector(".eye-icon");
+
+eye.addEventListener("click", (e) => {});

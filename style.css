@@ -105,8 +105,13 @@ button:hover {
   justify-content: space-between;
 }
 
-.card-icon-row img {
+.eye-icon {
   height: 28px;
+  cursor: pointer;
+}
+
+.unread {
+  transform: rotate(360deg);
 }
 
 .remove-button {

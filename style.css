@@ -94,7 +94,11 @@ button:hover {
   margin-top: 8px;
   overflow: hidden;
   text-overflow: ellipsis;
-  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 7; /* number of lines to show */
+  line-clamp: 7;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
 }
 
 .card-icon-row {

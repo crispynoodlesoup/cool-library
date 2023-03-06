@@ -41,7 +41,7 @@ function changeReadStatus(book) {
 
   // animate icon
   if (book.read) {
-    if (this.classList.contains("unread")) this.classList.remove("unread");
+    this.classList.remove("unread");
     this.src = "./eye.svg";
   } else {
     this.classList.add("unread");
@@ -99,6 +99,7 @@ function addBookToLibrary(
   if (read) {
     eyeIcon.src = "./eye.svg";
   } else {
+    eyeIcon.classList.add("unread");
     eyeIcon.src = "./eye-off.svg";
   }
 

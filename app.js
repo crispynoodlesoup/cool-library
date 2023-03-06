@@ -73,8 +73,12 @@ function addBookToLibrary(
   cardTitle.innerText = myBook.title;
   const cardAuthor = document.createElement("h5");
   cardAuthor.innerText = `By: ${myBook.author}`;
+
+  const descriptionWrap = document.createElement("div");
+  descriptionWrap.classList.add("description-wrap");
   const cardDescription = document.createElement("p");
   cardDescription.innerText = myBook.description;
+  descriptionWrap.appendChild(cardDescription);
 
   // create card icon row with respective classes and text
   const cardIconRow = document.createElement("div");
@@ -108,7 +112,7 @@ function addBookToLibrary(
   // append sub-elements to book card
   bookCard.appendChild(cardTitle);
   bookCard.appendChild(cardAuthor);
-  bookCard.appendChild(cardDescription);
+  bookCard.appendChild(descriptionWrap);
   bookCard.appendChild(cardIconRow);
 
   // save index in DOM and display book card on bookshelf

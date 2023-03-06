@@ -90,8 +90,12 @@ button:hover {
   color: #777;
 }
 
-.book-card p {
+.description-wrap {
   margin-top: 8px;
+  flex: 1;
+}
+
+.book-card p {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -99,6 +103,7 @@ button:hover {
   line-clamp: 7;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
+  margin-bottom: auto;
 }
 
 .card-icon-row {

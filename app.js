@@ -19,12 +19,14 @@ const bookshelf = document.querySelector(".bookshelf");
 let myLibrary = [];
 
 // Book constructor
-function Book(index, title, read, author = "", description = "") {
-  this.index = index;
-  this.title = title;
-  this.read = read;
-  this.author = author;
-  this.description = description;
+class Book {
+  constructor(index, title, read, author = "", description = "") {
+    this.index = index;
+    this.title = title;
+    this.read = read;
+    this.author = author;
+    this.description = description;
+  }
 }
 
 function removeBookFromLibrary(book) {
